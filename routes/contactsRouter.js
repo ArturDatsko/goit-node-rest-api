@@ -14,7 +14,6 @@ import {
   updateFavoriteSchema,
 } from "../schemas/contactsSchemas.js";
 import { isValidId } from "../helpers/isValidId.js";
-import { authenticate } from "../helpers/authenticate.js";
 
 const contactsRouter = express.Router();
 
@@ -33,7 +32,6 @@ contactsRouter.post(
 
 contactsRouter.put(
   "/:id",
-  authenticate,
   isValidId,
   validateBody(updateContactSchema),
   updateContact
@@ -41,7 +39,6 @@ contactsRouter.put(
 
 contactsRouter.patch(
   "/:id/favorite",
-  authenticate,
   isValidId,
   validateBody(updateFavoriteSchema),
   updateFavorite
